@@ -1905,7 +1905,7 @@ fn draw_cpu(p: &mut Painter, r: R, sc: &Scale, d: &Data, hist: &VecDeque<f32>) {
 
 fn draw_gpu(p: &mut Painter, r: R, sc: &Scale, d: &Data, hist: &VecDeque<f32>) {
     let g = d.gpu;
-    let name = g.name.clone().unwrap_or_else(|| "GPU".into());
+    let name = g.name.clone().unwrap_or_else(|| "RTX 5070 Ti".into());
     let pct = d.gpu_pct.map_or("--".into(), |v| format!("{v:.0}"));
     let unit = if d.gpu_pct.is_some() { "%" } else { "" };
     let b = big_panel(p, r, sc, th().gpu, "GRAPHICS", "02", &name, d.gpu_pct.map(|v| v / 100.0), &pct, unit, hist);
@@ -2711,7 +2711,7 @@ fn paint_cockpit(p: &mut Painter, w: f32, h: f32, sc: &Scale, d: &Data, now: &ch
     let (gt, gtc) = tval(g.temp_edge_c.map(|v| v as f32), 80.0, 90.0);
     let (ht, htc) = tval(g.temp_hotspot_c.map(|v| v as f32), 95.0, 105.0);
     let gp = g.power_w.map_or("--".into(), |v| v.to_string());
-    let name = g.name.clone().unwrap_or_else(|| "GPU".into());
+    let name = g.name.clone().unwrap_or_else(|| "RTX 5070 Ti".into());
     gauge(p, rcx, cy, r, sc, th().gpu, "GPU", d.gpu_pct.map(|v| v / 100.0), &d.gpu_pct.map_or("--".into(), |v| format!("{v:.0}")), &name,
         [("TEMP", gt, "\u{b0}C", gtc), ("HOTSPOT", ht, "\u{b0}C", htc), ("POWER", gp, "W", th().text)]);
 
