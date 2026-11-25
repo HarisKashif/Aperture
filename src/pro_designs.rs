@@ -190,7 +190,7 @@ pub(super) fn vm(d: &Data, now: &chrono::DateTime<Local>) -> Vm {
         cpu_load: format!("{:.0}", d.cpu_pct),
         cpu_frac: (d.cpu_pct / 100.0).clamp(0.0, 1.0),
         cpu,
-        gpu_name: g.name.clone().unwrap_or_else(|| "GPU".into()),
+        gpu_name: g.name.clone().unwrap_or_else(|| "RTX 5070 Ti".into()),
         gpu_temp,
         gpu_temp_color,
         gpu_temp_f: g.temp_edge_c.map(|t| (t as f32 / 100.0).clamp(0.0, 1.0)),
